@@ -1,0 +1,58 @@
+package simplejavaprograms;
+
+/**
+ *
+ * @author user
+ */
+
+import java.util.*;  
+class GenericEx{  
+public static void main(String args[]){  
+ArrayList<String> list=new ArrayList<String>();  
+list.add("rahul");  
+list.add("jai");  
+//list.add(32);//compile time error  
+  
+String s=list.get(1);//type casting is not required  
+System.out.println("Using the ArrayList class");
+System.out.println("element is: "+s);  
+  
+Iterator<String> itr=list.iterator();  
+while(itr.hasNext()){  
+System.out.println(itr.next());  
+}
+
+
+//Example Map
+System.out.println("Using Java Generics using Map");
+Map<Integer,String> map=new HashMap<Integer,String>();  
+map.put(1,"vijay");  
+map.put(4,"umesh");  
+map.put(2,"ankit");  
+  
+//Now use Map.Entry for Set and Iterator  
+Set<Map.Entry<Integer,String>> set=map.entrySet();  
+  
+Iterator<Map.Entry<Integer,String>> itr1=set.iterator();  
+while(itr1.hasNext()){  
+Map.Entry e=itr1.next();//no need to typecast  
+System.out.println(e.getKey()+" "+e.getValue());  
+}  
+
+
+//Generic class
+System.out.println("Using Java Generic class");
+class MyGen<T>{  
+T obj;  
+void add(T obj){this.obj=obj;}  
+T get(){return obj;}  
+}  
+MyGen<Integer> m=new MyGen<Integer>();  
+m.add(2);  
+//m.add("vivek");//Compile time error  
+System.out.println(m.get());  
+
+
+
+}  
+}  
